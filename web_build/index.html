@@ -1,0 +1,26 @@
+<html>
+<h1>
+    Check the console.
+</h1>
+<script>
+    function initialize(wasm_library_path) {
+        let imports = {
+            env: {}
+        };
+
+        let bytes;
+        WebAssembly.compileStreaming(fetch(wasm_library_path)).then(module => {
+            console.log(WebAssembly.Module.imports(module));
+            imports.env.memory = new WebAssembly.Memory({ initial: 17, maximum: 16384 * 1.0, shared: true });
+            return WebAssembly.instantiate(module, imports)
+        }).then(results => {
+            console.log(results);
+            // Call our start function.
+            //results.exports.main();
+            console.log("INITIALIZED: ", results.exports.test());
+        });
+    }
+    initialize("wasm.wasm")
+</script>
+
+</html>
