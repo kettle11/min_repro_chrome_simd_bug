@@ -10,12 +10,13 @@ Chrome's WebAssembly SIMD code appears to work inconsistently when SIMD and Wasm
 * Clone this repository
 * Host the `web_build` directory locally with these CORS headers set on the local server: 
   `--header Cross-Origin-Opener-Policy='same-origin' --header Cross-Origin-Embedder-Policy='require-corp'`
-  
-* Go to your locally hosted page **with the developer console closed** and after the page has loaded open the console.
+* Go to your locally hosted page.
+* Refresh the page once with **with the developer console closed**. 
+* After the page has loaded open the console.
   *  If the bug reproduces it will show `INITIALIZED: 0`.
-  *   If it does not reproduce it will show `INITIALIZED: 199.9076385498047`
+  *  If it does not reproduce it will show `INITIALIZED: 199.9076385498047`
 
-* If the developer console is opened when the page is loaded this will not reproduce. 
+* If the developer console is opened when the page is refreshed this will not reproduce. 
 
 ## Code that's going wrong.
 
